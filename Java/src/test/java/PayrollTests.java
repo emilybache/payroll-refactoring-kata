@@ -33,4 +33,11 @@ class PayrollTests {
         var payCheck  = PayrollApplication.payAmount(employee, IRRELEVANT);
         assertThat(payCheck).usingRecursiveComparison().isEqualTo(new PayCheck(0, "SEP"));
     }
+
+    @Test
+    void separated_and_retired() {
+        var employee = new Employee(IRRELEVANT, true, true);
+        var payCheck  = PayrollApplication.payAmount(employee, IRRELEVANT);
+        assertThat(payCheck).usingRecursiveComparison().isEqualTo(new PayCheck(0, "SEP"));
+    }
 }
