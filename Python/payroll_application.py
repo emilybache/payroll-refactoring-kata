@@ -1,10 +1,12 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Employee:
     rate: int
     separated: bool
     retired: bool
+
 
 @dataclass
 class PayCheck:
@@ -12,30 +14,27 @@ class PayCheck:
     reasonCode: str
 
 
-class PayrollApplication:
+def _compute_regular_pay_amount(employee: Employee, work_hours: float) -> float:
+    return employee.rate * work_hours
 
-    @staticmethod
-    def pay_amount(employee: Employee, work_hours: int) -> PayCheck:
-        result = None
 
-        if not employee.separated:
-            if employee.retired:
-                result = PayCheck(0, "RET")
-            else:
-                # Logic to compute amount
-                bonus = PayrollApplication.__compute_bonus(work_hours)
-                regular_amount = PayrollApplication.__compute_regular_pay_amount(employee, work_hours)
-                amount = bonus + regular_amount
-                result = PayCheck(amount, "EMP")
+def _compute_bonus(work_hours: int) -> float:
+    return 1000 if work_hours > 40 else 0
+
+
+def pay_amount(employee: Employee, work_hours: int) -> PayCheck:
+    result = None
+
+    if not employee.separated:
+        if employee.retired:
+            result = PayCheck(0, "RET")
         else:
-            result = PayCheck(0, "SEP")
+            # Logic to compute amount
+            bonus = _compute_bonus(work_hours)
+            regular_amount = _compute_regular_pay_amount(employee, work_hours)
+            amount = bonus + regular_amount
+            result = PayCheck(amount, "EMP")
+    else:
+        result = PayCheck(0, "SEP")
 
-        return result
-
-    @staticmethod
-    def __compute_bonus(work_hours: int) -> float:
-        return 1000 if work_hours > 40 else 0
-
-    @staticmethod
-    def __compute_regular_pay_amount(employee: Employee, work_hours: float) -> float:
-        return employee.rate * work_hours
+    return result
