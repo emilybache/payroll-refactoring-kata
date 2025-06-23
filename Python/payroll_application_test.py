@@ -25,3 +25,7 @@ class PayrollApplicationTestCase(unittest.TestCase):
         employee = Employee(self.IRRELEVANT, True, False)
         payCheck = PayrollApplication.pay_amount(employee, self.IRRELEVANT)
         assert payCheck == PayCheck(0, "SEP")
+
+
+if __name__ == '__main__':
+    unittest.main()
