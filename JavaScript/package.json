@@ -1,0 +1,19 @@
+{
+  "name": "payroll-refactoring-kata",
+  "description": "A small code to practice refactoring the bumpy rode code smell",
+  "keywords": [
+    "refactoring",
+    "kata"
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Henrique Silverio",
+  "type": "module",
+  "main": "src/PayrollApplication.mjs",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
