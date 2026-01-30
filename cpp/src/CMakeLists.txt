@@ -1,5 +1,5 @@
 set(SRC_LIB_NAME src)
-set(SOURCES sample.cpp
+set(SOURCES
         Employee.cpp
         Employee.h
         PayCheck.cpp
