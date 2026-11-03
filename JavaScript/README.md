@@ -3,13 +3,7 @@
 ## System Requirements
 
 - Node.js >= 22
-- npm >= 11
-
-## Install
-
-```bash
-npm i
-```
+- npm >= 10
 
 ## Tests
 

@@ -1,3 +1,6 @@
+import assert from 'node:assert/strict'
+import { describe, it } from 'node:test'
+
 import Employee from '../src/Employee.mjs'
 import PayCheck from '../src/PayCheck.mjs'
 import PayrollApplication from '../src/PayrollApplication.mjs'
@@ -11,7 +14,7 @@ describe('PayrollApplication', () => {
 
     const payCheck = app.payAmount(employee, 30)
 
-    expect(payCheck.equals(new PayCheck(3000, "EMP"))).toBe(true)
+    assert.strictEqual(payCheck.equals(new PayCheck(3000, "EMP")), true)
   })
 
   it('With bonus', () => {
@@ -20,7 +23,7 @@ describe('PayrollApplication', () => {
 
     const payCheck = app.payAmount(employee, 41)
 
-    expect(payCheck.equals(new PayCheck(1410, "EMP"))).toBe(true)
+    assert.strictEqual(payCheck.equals(new PayCheck(1410, "EMP")), true)
   })
 
   it('Retired', () => {
@@ -29,7 +32,7 @@ describe('PayrollApplication', () => {
 
     const payCheck = app.payAmount(employee, IRRELEVANT)
 
-    expect(payCheck.equals(new PayCheck(0, "RET"))).toBe(true)
+    assert.strictEqual(payCheck.equals(new PayCheck(0, "RET")), true)
   })
 
   it('Separated', () => {
@@ -38,7 +41,7 @@ describe('PayrollApplication', () => {
 
     const payCheck = app.payAmount(employee, IRRELEVANT)
 
-    expect(payCheck.equals(new PayCheck(0, "SEP"))).toBe(true)
+    assert.strictEqual(payCheck.equals(new PayCheck(0, "SEP")), true)
   })
 
   it('Separated and Retired', () => {
@@ -47,6 +50,6 @@ describe('PayrollApplication', () => {
 
     const payCheck = app.payAmount(employee, IRRELEVANT)
 
-    expect(payCheck.equals(new PayCheck(0, "SEP"))).toBe(true)
+    assert.strictEqual(payCheck.equals(new PayCheck(0, "SEP")), true)
   })
 })
